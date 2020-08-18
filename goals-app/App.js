@@ -16,7 +16,7 @@ export default function App() {
     ]);
   };
 
-  const renderItem = ({ item }) => <GoalItem title={item.value} />;
+  const renderItem = ({ item }) => <GoalItem onDelete={() => console.log('Working?')} title={item.value} />;
 
   return (
     <View style={styles.screen}>
