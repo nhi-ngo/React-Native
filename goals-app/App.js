@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, Button, FlatList } from 'react-native';
 import GoalItem from './components/GoalItem';
 import GoalInput from './components/GoalInput';
 
 export default function App() {
   const [goals, setGoals] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const addGoal = title => {
+  const onAddGoal = title => {
     setGoals(currentGoals => [
       ...currentGoals,
       {
@@ -14,17 +15,24 @@ export default function App() {
         value: title,
       },
     ]);
+
+    setModalVisible(false);
   };
 
   const removeGoal = goalId => {
     setGoals(currentGoals => currentGoals.filter(goal => goal.id !== goalId));
   };
 
+  const onButtonCancel = () => {
+    setModalVisible(false);
+  };
+
   const renderItem = ({ item }) => <GoalItem id={item.id} onDelete={removeGoal} title={item.value} />;
 
   return (
     <View style={styles.screen}>
-      <GoalInput onAddGoal={addGoal} />
+      <Button title="Add New Goal" onPress={() => setModalVisible(true)} />
+      <GoalInput modalVisible={modalVisible} onAddGoal={onAddGoal} onButtonCancel={onButtonCancel} />
       <FlatList data={goals} renderItem={renderItem} keyExtractor={item => item.id}></FlatList>
     </View>
   );
