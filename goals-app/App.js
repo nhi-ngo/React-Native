@@ -16,7 +16,11 @@ export default function App() {
     ]);
   };
 
-  const renderItem = ({ item }) => <GoalItem onDelete={() => console.log('Working?')} title={item.value} />;
+  const removeGoal = goalId => {
+    setGoals(currentGoals => currentGoals.filter(goal => goal.id !== goalId));
+  };
+
+  const renderItem = ({ item }) => <GoalItem id={item.id} onDelete={removeGoal} title={item.value} />;
 
   return (
     <View style={styles.screen}>
