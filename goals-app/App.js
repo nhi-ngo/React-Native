@@ -6,8 +6,14 @@ export default function App() {
   const [goals, setGoals] = useState([]);
 
   const addGoal = () => {
-    setGoals(currentGoals => [...currentGoals, enteredGoal]);
+    setGoals(currentGoals => [...currentGoals, { id: Math.random().toString(), value: enteredGoal }]);
   };
+
+  const renderItem = ({ item }) => (
+    <View style={styles.listItem}>
+      <Text>{item.value}</Text>
+    </View>
+  );
 
   return (
     <View style={styles.screen}>
@@ -15,13 +21,7 @@ export default function App() {
         <TextInput placeholder="Course Goal" style={styles.input} value={enteredGoal} onChangeText={setEnteredGoal} />
         <Button title="ADD" onPress={addGoal}></Button>
       </View>
-      <View>
-        {goals.map(goal => (
-          <View key={goal} style={styles.listItem}>
-            <Text>{goal}</Text>
-          </View>
-        ))}
-      </View>
+      <FlatList data={goals} renderItem={renderItem} keyExtractor={item => item.id}></FlatList>
     </View>
   );
 }
