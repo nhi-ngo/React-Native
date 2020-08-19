@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
+import Input from '../components/Input';
 import colors from '../constants/colors';
 
 const StartGameScreen = () => (
@@ -8,9 +9,14 @@ const StartGameScreen = () => (
     <Text style={styles.title}>Start a New Game!</Text>
     <Card style={styles.inputContainer}>
       <Text>Select a Number</Text>
-      <Card style={styles.textInputContainer}>
-        <TextInput></TextInput>
-      </Card>
+      <Input
+        style={styles.input}
+        blurOnSubmit // only works in Android
+        autoCapitalize="none"
+        autoCorrect={false}
+        keyboardType="number-pad"
+        maxLength={2}
+      />
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
           <Button title="Reset" onPress={() => {}} color={colors.lightGreen}></Button>
@@ -38,11 +44,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 15,
   },
-  textInputContainer: {
-    width: 100,
-    marginTop: 10,
-    padding: 10,
-  },
   buttonContainer: {
     flexDirection: 'row',
     width: '100%',
@@ -51,6 +52,10 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 100,
+  },
+  input: {
+    width: 50,
+    textAlign: 'center',
   },
 });
 
