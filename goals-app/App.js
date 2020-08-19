@@ -8,6 +8,10 @@ export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
 
   const onAddGoal = title => {
+    if (title.length === 0) {
+      return;
+    }
+
     setGoals(currentGoals => [
       ...currentGoals,
       {
