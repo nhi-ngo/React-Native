@@ -17,6 +17,7 @@ const generateRandomBetween = (min, max, exclude) => {
 const GameScreen = ({ userInput, onGameOver }) => {
   const [currentGuess, setCurrentGuess] = useState(generateRandomBetween(1, 100, userInput));
   const [rounds, setRounds] = useState(0);
+
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
 
@@ -24,7 +25,7 @@ const GameScreen = ({ userInput, onGameOver }) => {
     if (currentGuess === userInput) {
       onGameOver(rounds);
     }
-  }, [currentGuess, userInput, onGameOver]);
+  }, [currentGuess, userInput, onGameOver, rounds]);
 
   const onNextGuess = direction => {
     if ((direction === 'lower' && currentGuess < userInput) || (direction === 'greater' && currentGuess > userInput)) {
