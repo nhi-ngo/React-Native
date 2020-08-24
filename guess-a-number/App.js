@@ -5,16 +5,16 @@ import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
 
 export default function App() {
-  const [userGuess, setUserGuess] = useState();
+  const [userInput, setUserInput] = useState();
 
   const onStartGame = selectedNumber => {
-    setUserGuess(selectedNumber);
+    setUserInput(selectedNumber);
   };
 
   let content = <StartGameScreen onStartGame={onStartGame} />;
 
-  if (userGuess) {
-    content = <GameScreen userInput={userGuess} />;
+  if (userInput) {
+    content = <GameScreen userInput={userInput} />;
   }
 
   return (
