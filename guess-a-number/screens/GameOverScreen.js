@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import BodyText from '../components/BodyText';
 import TitleText from '../components/TitleText';
+import MainButton from '../components/MainButton';
 import colors from '../constants/colors';
 
 const GameOverScreen = ({ userNumber, roundsNumber, onRestartGame }) => (
@@ -27,7 +29,7 @@ const GameOverScreen = ({ userNumber, roundsNumber, onRestartGame }) => (
       </BodyText>
     </View>
 
-    <Button title="NEW GAME" onPress={onRestartGame} />
+    <MainButton onPress={onRestartGame}>NEW GAME</MainButton>
   </View>
 );
 
