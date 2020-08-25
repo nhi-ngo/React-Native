@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
-import colors from '../constants/colors';
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Alert,
+} from 'react-native';
 import Card from '../components/Card';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
+import BodyText from '../components/BodyText';
+import TitleText from '../components/TitleText';
+import colors from '../constants/colors';
 
 const StartGameScreen = props => {
   const [enteredValue, setEnteredValue] = useState('');
@@ -41,9 +51,12 @@ const StartGameScreen = props => {
   if (confirmed) {
     confirmedOutput = (
       <Card style={styles.chosenNumberContainer}>
-        <Text>You selected</Text>
+        <BodyText>You selected</BodyText>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button title="START GAME" onPress={() => props.onStartGame(selectedNumber)}></Button>
+        <Button
+          title="START GAME"
+          onPress={() => props.onStartGame(selectedNumber)}
+        ></Button>
       </Card>
     );
   }
@@ -55,9 +68,9 @@ const StartGameScreen = props => {
       }}
     >
       <View style={styles.screen}>
-        <Text style={styles.title}>Start a New Game!</Text>
+        <TitleText style={styles.title}>Start a New Game!</TitleText>
         <Card style={styles.inputContainer}>
-          <Text>Select a Number</Text>
+          <BodyText>Select a Number</BodyText>
           <Input
             style={styles.input}
             blurOnSubmit // only works in Android
@@ -70,10 +83,18 @@ const StartGameScreen = props => {
           />
           <View style={styles.buttonContainer}>
             <View style={styles.button}>
-              <Button title="Reset" onPress={onInputReset} color={colors.lightGreen}></Button>
+              <Button
+                title="Reset"
+                onPress={onInputReset}
+                color={colors.lightGreen}
+              ></Button>
             </View>
             <View style={styles.button}>
-              <Button title="Confirm" onPress={onInputConfirm} color={colors.darkGreen}></Button>
+              <Button
+                title="Confirm"
+                onPress={onInputConfirm}
+                color={colors.darkGreen}
+              ></Button>
             </View>
           </View>
         </Card>
