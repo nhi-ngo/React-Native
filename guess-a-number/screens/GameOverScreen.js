@@ -8,9 +8,14 @@ const GameOverScreen = ({ userNumber, roundsNumber, onRestartGame }) => (
     <TitleText>The Game is Over!</TitleText>
     <View style={styles.imageContainer}>
       <Image
-        source={require('../assets/success.png')}
+        fadeDuration={1000}
+        // source={require('../assets/success.png')} // adding local image
+        source={{
+          uri:
+            'https://www.yourdictionary.com/images/definitions/lg/12337.summit.jpg',
+        }}
         style={styles.image}
-        // resizeMode="content"
+        resizeMode="cover"
       />
     </View>
 
