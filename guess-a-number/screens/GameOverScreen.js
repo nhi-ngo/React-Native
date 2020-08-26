@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   },
   resultText: {
     textAlign: 'center',
+    marginBottom: 15,
   },
   highlight: {
     color: colors.lightGreen,
